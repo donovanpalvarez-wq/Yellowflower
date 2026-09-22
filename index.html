@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Flores amarillas para Pao 💛</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(
+        160deg,
+        #fff8dc,
+        #fff1ad,
+        #ffe082
+      );
+      overflow-x: hidden;
+      color: #4b3515;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 15px;
+    }
+
+    .container {
+      text-align: center;
+      width: 100%;
+      max-width: 700px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 7vw, 3.8rem);
+      margin-bottom: 10px;
+      color: #7a5200;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin: 0 auto 30px;
+      max-width: 540px;
+      color: #6b4c19;
+    }
+
+    .flower-wrapper {
+      position: relative;
+      width: 360px;
+      height: 360px;
+      max-width: 90vw;
+      max-height: 90vw;
+      margin: 0 auto;
+    }
+
+    .flower {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      animation: appear 1.2s ease;
+    }
+
+    @keyframes appear {
+      from {
+        transform: scale(0.3) rotate(-40deg);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    .petal {
+      position: absolute;
+      width: 115px;
+      height: 170px;
+      background: linear-gradient(
+        145deg,
+        #fff16b,
+        #ffd000
+      );
+      border-radius: 60% 60% 45% 45%;
+      left: 50%;
+      top: 50%;
+      transform-origin: 50% 100%;
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 14px rgba(168, 113, 0, 0.18),
+        inset 0 0 15px rgba(255, 255, 255, 0.4);
+
+      transition:
+        transform 0.3s ease,
+        filter 0.3s ease,
+        opacity 0.3s ease;
+    }
+
+    .petal:hover {
+      filter: brightness(1.08);
+    }
+
+    .petal.clicked {
+      filter: saturate(0.8);
+    }
+
+    .p1 {
+      transform:
+        translate(-50%, -100%)
+        rotate(0deg)
+        translateY(-30px);
+    }
+
+    .p2 {
+      transform:
+        translate(-50%, -100%)
+        rotate(45deg)
+        translateY(-30px);
+    }
+
+    .p3 {
+      transform:
+        translate(-50%, -100%)
+        rotate(90deg)
+        translateY(-30px);
+    }
+
+    .p4 {
+      transform:
+        translate(-50%, -100%)
+        rotate(135deg)
+        translateY(-30px);
+    }
+
+    .p5 {
+      transform:
+        translate(-50%, -100%)
+        rotate(180deg)
+        translateY(-30px);
+    }
+
+    .p6 {
+      transform:
+        translate(-50%, -100%)
+        rotate(225deg)
+        translateY(-30px);
+    }
+
+    .p7 {
+      transform:
+        translate(-50%, -100%)
+        rotate(270deg)
+        translateY(-30px);
+    }
+
+    .p8 {
+      transform:
+        translate(-50%, -100%)
+        rotate(315deg)
+        translateY(-30px);
+    }
+
+    .center {
+      position: absolute;
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 35%, #7b5113, #3c2507);
+
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+
+      z-index: 10;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: white;
+      font-weight: bold;
+      text-align: center;
+
+      padding: 15px;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 7px 15px rgba(64, 37, 0, 0.35);
+
+      transition: 0.3s;
+    }
+
+    .center:hover {
+      transform:
+        translate(-50%, -50%)
+        scale(1.06);
+    }
+
+    .stem {
+      width: 18px;
+      height: 240px;
+      background: linear-gradient(
+        to right,
+        #388e3c,
+        #66bb6a
+      );
+
+      margin: -80px auto 0;
+
+      border-radius: 20px;
+
+      position: relative;
+      z-index: -1;
+    }
+
+    .leaf {
+      width: 90px;
+      height: 48px;
+      background: linear-gradient(
+        145deg,
+        #5cb85c,
+        #2e7d32
+      );
+
+      position: absolute;
+
+      border-radius:
+        100% 0
+        100% 0;
+
+      opacity: 0.95;
+    }
+
+    .leaf.left {
+      left: -75px;
+      top: 90px;
+      transform: rotate(-25deg);
+    }
+
+    .leaf.right {
+      right: -75px;
+      top: 140px;
+      transform:
+        scaleX(-1)
+        rotate(-25deg);
+    }
+
+    .message-box {
+      margin: 40px auto 0;
+      padding: 22px 25px;
+      max-width: 560px;
+
+      border-radius: 22px;
+
+      background: rgba(255,255,255,0.65);
+
+      backdrop-filter: blur(6px);
+
+      box-shadow:
+        0 10px 30px rgba(100, 65, 0, 0.12);
+
+      min-height: 130px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transition: 0.3s;
+    }
+
+    #message {
+      font-size: 1.15rem;
+      line-height: 1.7;
+    }
+
+    .hint {
+      margin-top: 18px;
+      font-size: 0.9rem;
+      opacity: 0.65;
+    }
+
+    .final {
+      margin-top: 25px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .heart {
+      color: #c99100;
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      pointer-events: none;
+      z-index: 1;
+
+      animation: floatUp linear forwards;
+
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform:
+          translateY(0)
+          rotate(0deg);
+
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.65;
+      }
+
+      100% {
+        transform:
+          translateY(-110vh)
+          rotate(360deg);
+
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .flower-wrapper {
+        width: 300px;
+        height: 300px;
+      }
+
+      .petal {
+        width: 90px;
+        height: 140px;
+      }
+
+      .center {
+        width: 105px;
+        height: 105px;
+        font-size: 0.85rem;
+      }
+
+      .stem {
+        margin-top: -60px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Para ti, Pao 💛</h1>
+
+  <p class="intro">
+    Hoy me enteré un poquito tarde de que era el día
+    de las flores amarillas...
+    pero pensé que todavía podía hacerte una.
+    <br><br>
+    Solo que esta tiene algo diferente:
+    <strong>cada pétalo tiene algo que quiero decirte (Baja un poquito la pantalla) </strong>
+  </p>
+
+
+  <div class="flower-wrapper">
+
+    <div class="flower">
+
+      <div class="petal p1" data-message="Me encanta tu sonrisa, especialmente cuando yo logro provocarla. 💛"></div>
+
+      <div class="petal p2" data-message="Gracias por todos esos momentos simples que, solo porque son contigo, terminan convirtiéndose en recuerdos importantes para mí."></div>
+
+      <div class="petal p3" data-message="Me encanta poder compartir contigo tantas cosas que amo: conciertos, salidas, canciones, lugares y momentos que ahora también tienen un pedacito de nosotros."></div>
+
+      <div class="petal p4" data-message="Gracias por acompañarme. No solamente físicamente, sino también en tantas etapas, pensamientos, emociones y cambios de mi vida."></div>
+
+      <div class="petal p5" data-message="Recuereda que nos quedan muchísimas primeras veces juntos: lugares que no conocemos, canciones que aún no escuchamos y recuerdos que todavía no existen."></div>
+
+      <div class="petal p6" data-message="Siempre me emociona pensar en verte. Y creo que eso es de mis cosas favoritas de nosotros."></div>
+
+      <div class="petal p7" data-message="Gracias por tu cariño, tu paciencia y por todas esas pequeñas formas en las que me haces sentir querido."></div>
+
+      <div class="petal p8" data-message="Entre todas las casualidades que pudieron pasar en nuestra vida, me encanta que una de ellas haya sido encontrarnos tú y yo. 💛"></div>
+
+
+      <div class="center" id="center">
+        Primero toca<br>los pétalos 🌻
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="stem">
+
+    <div class="leaf left"></div>
+
+    <div class="leaf right"></div>
+
+  </div>
+
+
+  <div class="message-box">
+
+    <p id="message">
+      Toca uno de los pétalos 💛
+    </p>
+
+  </div>
+
+
+  <p class="hint">
+    Hay 8 mensajes escondidos.
+  </p>
+
+
+  <div class="final">
+
+    No sabía que hoy tocaban flores amarillas,
+    pero sí sé que cualquier excusa para recordarte
+    cuánto te amo me parece una buena excusa.
+
+    <br><br>
+
+    Las flores físicas te las debo.
+
+    <br>
+
+    <strong>
+      Esta, por mientras, es solo para ti.
+      <span class="heart">💛</span>
+    </strong>
+
+  </div>
+
+
+</div>
+
+
+<script>
+
+  const petals = document.querySelectorAll(".petal");
+
+  const message =
+    document.getElementById("message");
+
+  const center =
+    document.getElementById("center");
+
+
+  let opened = 0;
+
+
+  petals.forEach((petal) => {
+
+    petal.addEventListener("click", () => {
+
+      message.style.opacity = 0;
+
+
+      setTimeout(() => {
+
+        message.innerHTML =
+          petal.dataset.message;
+
+        message.style.opacity = 1;
+
+      }, 180);
+
+
+      if (!petal.classList.contains("clicked")) {
+
+        petal.classList.add("clicked");
+
+        opened++;
+
+      }
+
+
+      if (opened === petals.length) {
+
+        center.innerHTML =
+          "Ahora<br>tócame 💛";
+
+      }
+
+    });
+
+  });
+
+
+  center.addEventListener("click", () => {
+
+    if (opened < petals.length) {
+
+      message.innerHTML =
+        "Todavía te faltan pétalos por descubrir 👀💛";
+
+      return;
+
+    }
+
+
+    message.innerHTML = `
+      <strong>
+      Y si llegaste hasta aquí...
+      </strong>
+
+      <br><br>
+
+      Solo quería decirte que no necesito
+      una fecha especial para querer darte flores.
+
+      <br><br>
+
+      Me encanta compartir mi vida contigo,
+      seguir conociéndote y seguir construyendo
+      recuerdos a tu lado.
+
+      <br><br>
+
+      Te amo, Bubucita. 💛
+    `;
+
+
+    createHeartBurst();
+
+  });
+
+
+  function createHeartBurst() {
+
+    for (let i = 0; i < 25; i++) {
+
+      setTimeout(() => {
+
+        createHeart();
+
+      }, i * 70);
+
+    }
+
+  }
+
+
+  function createHeart() {
+
+    const heart =
+      document.createElement("div");
+
+    heart.className =
+      "floating-heart";
+
+    heart.innerHTML =
+      Math.random() > 0.4
+      ? "💛"
+      : "🌻";
+
+
+    heart.style.left =
+      Math.random() * 100 + "vw";
+
+
+    heart.style.fontSize =
+      (18 + Math.random() * 20) + "px";
+
+
+    heart.style.animationDuration =
+      (4 + Math.random() * 3) + "s";
+
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(() => {
+
+      heart.remove();
+
+    }, 7000);
+
+  }
+
+
+  // Corazones ocasionales de fondo
+
+  setInterval(() => {
+
+    if (Math.random() > 0.45) {
+
+      createHeart();
+
+    }
+
+  }, 1800);
+
+</script>
+
+</body>
+</html>
